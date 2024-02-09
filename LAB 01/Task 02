@@ -1,0 +1,54 @@
+/*student Name Dania khan
+student id 23k-0072*/
+//calculating total marks , avg and grade of students
+
+#include <iostream>
+using namespace std;
+//function for average and sum
+void gradeCalc(int s, int g[50][3] ){ 
+    float sum;
+	float avg;
+
+	for (int i=0; i<s; i++){
+	sum = 0; 
+		for (int j=0; j<3; j++){
+			sum =sum + g[i][j]; 
+	     } 
+		 cout << "Total marks of student " << i+1 << " is: " <<  sum << endl;
+		 avg = sum / 3; 
+		 cout << "Average marks for student " << i+1 << " is: " <<  avg << "\n";
+		
+			if(avg >= 90){
+		      cout << "Grade for student " << i+1 << " is A \n"; 
+	         }
+	        else if(avg >= 80 && avg<= 89){
+		     cout << "Grade for student " << i+1 << " is B \n"; 
+	         }
+	         else if(avg >= 70 && avg <= 79){
+		      cout << "Grade for student " << i+1 << " is C \n"; 
+	         }
+	         else if(avg >= 60 && avg <= 79){
+		      cout << "Grade for student " << i+1 << " is D \n"; 
+	         }
+	         else if(avg < 60){
+	         cout << "Grade for student " << i+1 << " is F \n"; 
+		 }
+	 }
+ }
+int main(){
+
+      int n;
+	  cout << "Enter number of students:\n";
+	  cin >> n;
+	  int s[n][3];
+	  for (int i=0; i<n; i++){
+	    cout << "Enter marks for Maths, Eng, and Science for student " << i+1 <<" respectively\n";
+	  	for (int j=0; j<3; j++){
+	  		cin >> s[i][j];		
+		 }
+	  }	
+	//calling the function 
+	gradeCalc(n, s);
+	
+return 0;
+}
