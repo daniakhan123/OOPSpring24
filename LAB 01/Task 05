@@ -1,0 +1,53 @@
+// student ID : 23k-0072
+// student name : Dania khan 
+
+#include <iostream>
+using namespace std;
+// defining struct
+typedef struct Event
+{
+    string eventName;
+    string date;
+    string venue;
+    string Organizer;
+
+}Event;
+int main (){
+    int n;
+    string d;
+    cout<<"enter the number of events ";
+    cin>>n;
+    Event event[n];
+    //dynamically allocating memory
+    Event *eventDetails = new Event[n];
+    cout<<"enter the event Details : "<<endl;
+      cin.ignore(); 
+    for (int i = 0; i < n; i++)
+    //taking inputs about the events 
+    {
+        cout<<"Event Name : ";
+        getline(cin, eventDetails[i].eventName);
+        cout<<"Date : ";
+        getline (cin, eventDetails[i].date);
+        cout<<"Event venue : ";
+		getline(cin, eventDetails[i].venue);
+		cout<<"Event organizer : ";
+		getline(cin, eventDetails[i].Organizer);
+    }
+    cout<<"Enter the date you want the event details for : ";
+	getline(cin, d);
+	for (int i=0; i<n; i++){
+        // comparing the dates for which the user wants the details
+		if (eventDetails[i].date == d){
+			cout<<eventDetails[i].eventName <<endl;
+			cout<<eventDetails[i].venue<<endl;
+			cout<<eventDetails[i].Organizer<<endl;		
+		}
+	}
+    // free the allocated memory 
+     delete[] eventDetails;
+	return 0;
+
+
+
+}
