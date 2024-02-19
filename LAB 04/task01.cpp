@@ -1,8 +1,6 @@
 /*
-Emaan Arshad 23I-2560
-lab04 task 1
-
-
+name : Dania Khan
+id : 23k-0072
 */
 #include <iostream>
 #include <string>
