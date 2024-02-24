@@ -26,7 +26,7 @@ public:
         }
     }
 
-    int display()
+    void display()
     {
 
         cout << "LOCATION :" << location << endl;
