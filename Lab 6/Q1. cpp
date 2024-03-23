@@ -1,0 +1,85 @@
+
+//Dania Khan
+// 23k-0072
+
+#include<iostream>
+using namespace std;
+
+class BankAccount {
+private:
+    int accountId;
+    double balance;
+    int *transactionHistory;
+    int numTransactions;
+
+public:
+    // Parameterized constructor
+    BankAccount(int id, double bal, int num, int history[]) {
+        accountId = id;
+        balance = bal;
+        numTransactions = num;
+        transactionHistory = new int[numTransactions];
+        for (int i = 0; i < numTransactions; i++) {
+            transactionHistory[i] = history[i];
+        }
+    }
+
+    // Copy constructor
+    BankAccount(const BankAccount& other) {
+        accountId = other.accountId;
+        balance = other.balance;
+        numTransactions = other.numTransactions;
+        transactionHistory = new int[numTransactions];
+        for (int i = 0; i < numTransactions; i++) {
+            transactionHistory[i] = other.transactionHistory[i];
+        }
+    }
+
+    // Destructor
+    ~BankAccount() {
+        delete[] transactionHistory;
+    }
+
+    void display() {
+        cout << "Your Account ID: " << accountId << endl;
+        cout << "Your Account Balance: " << balance << endl;
+        cout << "Number of transactions: " << numTransactions << endl;
+        cout << "Your Transaction History: ";
+        for (int i = 0; i < numTransactions; i++) {
+            cout << transactionHistory[i] << " ";
+        }
+        cout << endl;
+    }
+
+    void updateTransactionHistory(int newNumTransactions, int newHistory[]) {
+        delete[] transactionHistory;
+        numTransactions = newNumTransactions;
+        transactionHistory = new int[numTransactions];
+        for (int i = 0; i < numTransactions; i++) {
+            transactionHistory[i] = newHistory[i];
+        }
+    }
+};
+
+int main() {
+    int history1[] = {100, 200, 300};
+    BankAccount myAccount(12345, 1000.0, 3, history1);
+    BankAccount copiedAccount = myAccount; // Copying the original account
+
+    cout << "Original Account Details:" << endl;
+    myAccount.display();
+    cout << endl;
+
+    cout << "Copied Account Details:" << endl;
+    copiedAccount.display();
+    cout << endl;
+
+    // Update transaction history of the original account
+    int newHistory[] = {500, 600, 700, 800};
+    myAccount.updateTransactionHistory(4, newHistory);
+
+    cout << "After updating original account details:" << endl;
+    myAccount.display();
+
+    return 0;
+}
